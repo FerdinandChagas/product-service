@@ -1,7 +1,13 @@
-FROM python:3.8-slim
+FROM python:3.12-slim
+
 WORKDIR /app
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+
+RUN pip install --no-cache -r requirements.txt
+
 COPY . .
+
 EXPOSE 8003
+
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8003"]
